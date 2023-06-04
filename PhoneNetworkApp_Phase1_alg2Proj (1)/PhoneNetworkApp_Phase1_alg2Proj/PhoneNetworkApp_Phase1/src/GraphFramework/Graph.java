@@ -107,12 +107,11 @@ public void readGraphFromFile(File fileName) throws FileNotFoundException {
 //--------------------------------------------------------------------------------
 //method to make graph    	
 public void makeGraph(int numOfvertices ,int numOfEdge) {
-
     //store the vetices
     for(int i=0; i<numOfvertices ;i++) Vertices[i]= new Vertex( Integer.toString(i) ); 
 
     //store edges inorder to sure that all vetices connect & generate random weight
-    for(int i=0; i<numOfvertices -1 ;i++) addEdge( Integer.parseInt(Vertices[i].label) ,Integer.parseInt(Vertices[i+1].label) ,(int)(2+Math.random()*11)); 
+    for(int i=0; i<numOfvertices -1 ;i++) addEdge( Integer.parseInt(Vertices[i].label) ,Integer.parseInt(Vertices[i+1].label) ,(int)(1+Math.random()*10) ); 
 
     //add the rest of edges randomly 
     int counter = 0;
@@ -128,8 +127,8 @@ public void makeGraph(int numOfvertices ,int numOfEdge) {
                 if( Vvertex!= Integer.parseInt(Vertices[Uvertex].AdjList.get(j).Target.label) )  break;	
 
             //when there's no self-loop vertex exist & none existing edge so add new edge then increment loop counter
-            addEdge(Integer.parseInt( Vertices[Uvertex].label),Integer.parseInt( Vertices[Vvertex].label), (int) (1 + Math.random() * 10));
-            counter++;}
+            addEdge( Integer.parseInt( Vertices[Uvertex].label),Integer.parseInt( Vertices[Vvertex].label), (int)(1+Math.random()*10) );
+            counter++; }
 
 }
 
