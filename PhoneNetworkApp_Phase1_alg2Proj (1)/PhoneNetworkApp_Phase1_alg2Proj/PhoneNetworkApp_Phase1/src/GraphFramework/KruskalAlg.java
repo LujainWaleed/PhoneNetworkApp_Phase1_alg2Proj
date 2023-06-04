@@ -11,8 +11,8 @@ public class KruskalAlg extends MSTAlgorithm {
 
 
     public KruskalAlg(Graph graph) {
-            this.graph=graph;
-            MSTresultList = new Edge[graph.verticesNO]; // MST List
+         this.graph=graph;
+         MSTresultList = new Edge[graph.verticesNO]; // MST List
     }
 	
 	
