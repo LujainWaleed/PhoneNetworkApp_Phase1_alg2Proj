@@ -18,45 +18,45 @@ public class KruskalAlg extends MSTAlgorithm {
 	
 	
     public void kruskal() {
-        MSTresultList = new Edge[graph.verticesNO]; // MST List
-        Vertex vv; // Vertex source
-        Vertex vu; // Vertex target
-        Edge edge; // Vertex edge
-        ArrayList<Edge> edges = new ArrayList<Edge>(); //PriorityQueue to store edges weights                
-        // Loop through ALL vertices
-        for(int i=0; i< graph.verticesNO; i++) {
-            vv = graph.vertices[i];
-            // Loop through adjacent list of this vertex
-            for(int j=0; j<vv.adjList.size() ; j++) {
-                edges.add(vv.adjList.get(j));	
-            } // end of inner for-loop
-        } // end of outer for-loop
-        // Sort All Edges in non-decreasing Order 
-        Collections.sort(edges);
+          MSTresultList = new Edge[graph.verticesNO]; // MST List
+          Vertex vv; // Vertex source
+          Vertex vu; // Vertex target
+          Edge edge; // Vertex edge
+          ArrayList<Edge> edges = new ArrayList<Edge>(); //PriorityQueue to store edges weights                
+          // Loop through ALL vertices
+          for(int i=0; i< graph.verticesNO; i++) {
+               vv = graph.vertices[i];
+               // Loop through adjacent list of this vertex
+               for(int j=0; j<vv.adjList.size() ; j++) {
+                   edges.add(vv.adjList.get(j));	
+                } // end of inner for-loop
+           } // end of outer for-loop
+           // Sort All Edges in non-decreasing Order 
+           Collections.sort(edges);
 
-        // Make Set for Each Vertex
-        Vertex[] quickFindDS = new Vertex[graph.verticesNO]; // Set the DS as the number of vertices 
-        makeSet(quickFindDS); // Make set for each vertex
-        int encounter = 0; 
+           // Make Set for Each Vertex
+           Vertex[] quickFindDS = new Vertex[graph.verticesNO]; // Set the DS as the number of vertices 
+           makeSet(quickFindDS); // Make set for each vertex
+           int encounter = 0; 
 
-        // Loop through ALL edges
-        while(encounter < MSTresultList.length-1) {
+           // Loop through ALL edges
+           while(encounter < MSTresultList.length-1) {
 
-            // Get Minimum-weight Edge & its source & target
-            edge = edges.remove(0);
-            vv = edge.source;
-            vu = edge.target;
+                // Get Minimum-weight Edge & its source & target
+                edge = edges.remove(0);
+                vv = edge.source;
+                vu = edge.target;
 
-            // Find Representative Subset from the QuickFind Disjoint Sets
-            if(!findSet(quickFindDS[vv.label].label, quickFindDS[vu.label].label)) {
-                // Append VT to VU & and update their representative value; 
-                union(quickFindDS, vv, vu);			
-                MSTresultList[encounter] = edge; // Add the target edge to the MST list	 
-                cost += MSTresultList[encounter].weight; // Get cost of minimum-weight edges (MST)
-                encounter++; // increment number of edges encountered
-            } // End of if-statement
-        } // End of while-loop
-    } // End of Method
+                // Find Representative Subset from the QuickFind Disjoint Sets
+                if(!findSet(quickFindDS[vv.label].label, quickFindDS[vu.label].label)) {
+                     // Append VT to VU & and update their representative value; 
+                     union(quickFindDS, vv, vu);			
+                     MSTresultList[encounter] = edge; 	 
+                     cost += MSTresultList[encounter].weight; 
+                     encounter++; 
+                } // End of if
+           } // End of the loop
+     } // End of Method
 	
 	
 
@@ -70,14 +70,14 @@ public class KruskalAlg extends MSTAlgorithm {
             Vertex vn = new Vertex(i);
             quickFindDS[i] = vn;
         }
-    } // End of makeSet method
+     } // End of makeSet method
     
     
-    public boolean findSet(int v1, int v2) {
+     public boolean findSet(int v1, int v2) {
             return v1 == v2;
-        } // End of FindSet Method
+     } // End of FindSet Method
 
-        public void union(Vertex[] quickFindDS, Vertex vv, Vertex vu) {	
+     public void union(Vertex[] quickFindDS, Vertex vv, Vertex vu) {	
             int vvRepresentative = Integer.parseInt(quickFindDS[Integer.parseInt(vv.label)].label); // Get VV representative 
             int vuRepresentative = Integer.parseInt(quickFindDS[Integer.parseInt(vu.label)].label); // Get VU representative
 
