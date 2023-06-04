@@ -1,6 +1,11 @@
 /*
 - algorthim project part'1'
 - group 13
+- members:
+- Raghad Ahmed "B8"
+- Manar Alnahdi	"B0B"
+- Lujain Aljahdali "B0B"
+- Alanood Alotaibi "B0A"
 */
 package PhoneNetworkApp;
 
