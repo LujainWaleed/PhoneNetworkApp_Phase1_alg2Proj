@@ -3,7 +3,7 @@ package GraphFramework;
 import java.util.ArrayList;
 import java.util.Collections;
 
-// This Class Support Kruskal Algorithm Using Quick Find implementations
+
 
 public class KruskalAlg extends MSTAlgorithm {
     // Data fields
